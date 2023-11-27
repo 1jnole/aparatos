@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import * as RiderActions from '../actions/riders.actions';
-import {RidersService} from "../../../../services/riders.service";
+import { RidersService } from '../../../../services/riders.service';
 
 @Injectable()
 export class RidersEffects {
@@ -13,8 +13,8 @@ export class RidersEffects {
       ofType(RiderActions.loadRiders),
       switchMap(() =>
         this.ridersService.getAll().pipe(
-          map(riders => RiderActions.loadRidersSuccess({ riders })),
-          catchError(error => of(RiderActions.loadRidersFailure({ error })))
+          map((riders) => RiderActions.loadRidersSuccess({ riders })),
+          catchError((error) => of(RiderActions.loadRidersFailure({ error })))
         )
       )
     )

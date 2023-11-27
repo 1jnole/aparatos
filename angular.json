@@ -56,10 +56,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "aparatos:build:production"
+              "buildTarget": "aparatos:build:production"
             },
             "development": {
-              "browserTarget": "aparatos:build:development"
+              "buildTarget": "aparatos:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -67,7 +67,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "aparatos:build"
+            "buildTarget": "aparatos:build"
           }
         },
         "test": {
