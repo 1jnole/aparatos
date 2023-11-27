@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RiderDTO } from '../data-access/dto/rider.dto';
-import { Observable, catchError, of, throwError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 @Injectable({
@@ -9,7 +9,7 @@ import { environment } from '../../../../environments/environment';
 export class RidersService {
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<RiderDTO[]> {
+  getRiders(): Observable<RiderDTO[]> {
     return this.http
       .get<RiderDTO[]>(environment.apiBaseUrl + '/riders')
       .pipe(catchError(this.handleError));

@@ -1,5 +1,4 @@
 import { createReducer, on } from '@ngrx/store';
-
 import {
   loadRiders,
   loadRidersFailure,
@@ -8,13 +7,13 @@ import {
 import { RiderDTO } from '../../../dto/rider.dto';
 
 export interface RidersState {
-  riders: RiderDTO[];
+  list: RiderDTO[];
   loading: boolean;
   error: Error | null;
 }
 
 export const initialRidersState: RidersState = {
-  riders: [],
+  list: [],
   loading: false,
   error: null
 };
@@ -24,7 +23,7 @@ export const ridersReducer = createReducer(
   on(loadRiders, (state) => ({ ...state, loading: true })),
   on(loadRidersSuccess, (state, { riders }) => ({
     ...state,
-    riders,
+    list: riders,
     loading: false
   })),
   on(loadRidersFailure, (state, { error }) => ({

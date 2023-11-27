@@ -5,7 +5,7 @@ import { AppState } from '../../../../../../core/state/app.state';
 export const selectRidersFeature = (state: AppState) =>
   state.deliveryManagement.riders;
 
-export const selectAllRiders = createSelector(
+export const selectRiderList = createSelector(
   selectRidersFeature,
-  (state: RidersState) => state.riders
+  (state: RidersState) => state.list
 );

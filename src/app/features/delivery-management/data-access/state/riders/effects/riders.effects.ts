@@ -12,7 +12,7 @@ export class RidersEffects {
     this.actions$.pipe(
       ofType(RiderActions.loadRiders),
       switchMap(() =>
-        this.ridersService.getAll().pipe(
+        this.ridersService.getRiders().pipe(
           map((riders) => RiderActions.loadRidersSuccess({ riders })),
           catchError((error) => of(RiderActions.loadRidersFailure({ error })))
         )

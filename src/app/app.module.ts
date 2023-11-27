@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { reducers } from './core/state/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([]),
     CoreModule,
     AppRoutingModule,
     !environment.production ? StoreDevtoolsModule.instrument() : []
