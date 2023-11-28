@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DeliveryManagementComponent } from './components/delivery-management/delivery-management.component';
 import { DeliveryManagementRoutingModule } from './delivery-management-routing.module';
-import { EffectsModule } from '@ngrx/effects';
-import { RidersEffects } from './data-access/state/riders/effects/riders.effects';
+import { DeliveryListComponent } from './components/delivery-list/delivery-list.component';
+import { deliveryManagementReducers } from './data-access/store/delivery-management/reducers/delivery-management.reducer';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
-  declarations: [DeliveryManagementComponent],
+  declarations: [DeliveryListComponent],
   imports: [
     CommonModule,
     DeliveryManagementRoutingModule,
-    EffectsModule.forFeature([RidersEffects])
+    StoreModule.forFeature('deliveryManagement', deliveryManagementReducers)
   ]
 })
 export class DeliveryManagementModule {}

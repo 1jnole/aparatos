@@ -4,11 +4,12 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
-import { reducers } from './core/state/app.state';
+
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { reducers } from './core/domain/interfaces/store/app.state';
 
 @NgModule({
   declarations: [AppComponent],

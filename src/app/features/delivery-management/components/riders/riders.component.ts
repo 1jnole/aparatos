@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {RidersFacade} from "../../data-access/state/riders/facade/riders.facade";
+import { RidersFacade } from '../../../riders/data-access/facade/riders.facade';
 
 @Component({
   selector: 'app-riders',
