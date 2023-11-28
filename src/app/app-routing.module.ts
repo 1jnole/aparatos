@@ -19,6 +19,11 @@ const routes: Routes = [
       import('./features/delivery-management/delivery-management.module').then(
         (m) => m.DeliveryManagementModule
       )
+  },
+  {
+    path: 'riders',
+    loadChildren: () =>
+      import('./features/riders/riders.module').then((m) => m.RidersModule)
   }
 ];
 
