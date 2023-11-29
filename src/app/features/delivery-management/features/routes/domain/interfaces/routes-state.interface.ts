@@ -1,7 +1,7 @@
-import { RouteEntity } from '../entities/route.entity';
+import { RouteModel } from './route.interface';
 
 export interface RoutesState {
-  list: RouteEntity[];
+  list: RouteModel[];
   loading: boolean;
   error: Error | null;
 }

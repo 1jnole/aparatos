@@ -1,7 +1,4 @@
 <div class="container mt-4">
-  <div class="d-flex justify-content-end mb-3">
-    <button class="btn btn-primary">New Order</button>
-  </div>
   <div class="row">
     <div
       class="col-md-4 mb-3"
@@ -16,11 +13,8 @@
           </p>
         </div>
         <div class="card-footer text-end">
-          <button
-            class="btn btn-success btn-sm"
-            (click)="onSelectOrder(order.orderId)"
-          >
-            Assign Order
+          <button class="btn btn-success btn-sm" (click)="onSelectOrder(order)">
+            Assign
           </button>
         </div>
       </div>

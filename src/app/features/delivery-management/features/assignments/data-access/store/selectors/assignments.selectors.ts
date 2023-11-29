@@ -1,21 +1,19 @@
 import { createSelector } from '@ngrx/store';
-import { AppState } from '../../../../../../../core/domain/interfaces/app-state.interface';
 import { AssignmentState } from '../../../domain/interfaces/assignment-state.interface';
 
-export const selectAssignmentsState = (state: AppState) =>
-  state.deliveryManagement.assignments;
+export const selectAssignmentsFeature = (state: AssignmentState) => state;
 
-export const selectAllAssignments = createSelector(
-  selectAssignmentsState,
+export const selectUpdatedRoute = createSelector(
+  selectAssignmentsFeature,
   (state: AssignmentState) => state.list
 );
 
-export const selectAssignmentsLoading = createSelector(
-  selectAssignmentsState,
+export const selectAssignmentLoading = createSelector(
+  selectAssignmentsFeature,
   (state: AssignmentState) => state.loading
 );
 
-export const selectAssignmentsError = createSelector(
-  selectAssignmentsState,
+export const selectAssignmentError = createSelector(
+  selectAssignmentsFeature,
   (state: AssignmentState) => state.error
 );

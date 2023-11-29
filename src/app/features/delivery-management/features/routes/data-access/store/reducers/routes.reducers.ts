@@ -5,9 +5,9 @@ import { initialRoutesState } from '../../../domain/entities/route.state';
 export const routesReducer = createReducer(
   initialRoutesState,
   on(RouteActions.loadRoutes, (state) => ({ ...state, loading: true })),
-  on(RouteActions.loadRoutesSuccess, (state, { routes }) => ({
+  on(RouteActions.loadRoutesSuccess, (state, { list }) => ({
     ...state,
-    routes,
+    list,
     loading: false
   })),
   on(RouteActions.loadRoutesFailure, (state, { error }) => ({

@@ -1,19 +1,22 @@
 import { createReducer, on } from '@ngrx/store';
-import * as AssignmentActions from '../actions/assignments.actions';
-import { initialAssignmentState } from '../../../domain/entities/asssignment.state';
+import * as AssignmentsActions from '../actions/assignments.actions';
+import { AssignmentState } from '../../../domain/interfaces/assignment-state.interface';
+
+export const initialState: AssignmentState = {
+  list: [],
+  loading: false,
+  error: null
+};
 
 export const assignmentsReducer = createReducer(
-  initialAssignmentState,
-  on(AssignmentActions.loadAssignments, (state) => ({
+  initialState,
+  on(AssignmentsActions.updateRoute, (state) => ({ ...state, loading: true })),
+  on(AssignmentsActions.updateRouteSuccess, (state, { route }) => ({
     ...state,
-    loading: true
-  })),
-  on(AssignmentActions.loadAssignmentsSuccess, (state, { assignments }) => ({
-    ...state,
-    assignments,
+    updatedRoute: route,
     loading: false
   })),
-  on(AssignmentActions.loadAssignmentsFailure, (state, { error }) => ({
+  on(AssignmentsActions.updateRouteFailure, (state, { error }) => ({
     ...state,
     error,
     loading: false

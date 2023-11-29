@@ -11,7 +11,12 @@ export const loadOrdersFailure = createAction(
   props<{ error: any }>()
 );
 
-export const navigateToAssignOrder = createAction(
-  '[Orders] Navigate to Assign Order',
-  props<{ orderId: string }>()
+export const selectOrder = createAction(
+  '[Orders] Select Order',
+  props<{ order: OrderDTO }>()
+);
+
+export const initiateAssignOrder = createAction(
+  '[Orders] Initiate Assign Order',
+  props<{ order: OrderDTO }>()
 );

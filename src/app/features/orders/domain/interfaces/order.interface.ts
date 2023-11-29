@@ -1,4 +1,4 @@
-export interface IOrder {
+export interface OrderModel {
   orderId: string;
   productName: string;
   price: number;

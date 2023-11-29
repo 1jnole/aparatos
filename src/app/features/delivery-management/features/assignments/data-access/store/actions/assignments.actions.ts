@@ -1,11 +1,16 @@
 import { createAction, props } from '@ngrx/store';
 
-export const loadAssignments = createAction('[Assignments] Load Assignments');
-export const loadAssignmentsSuccess = createAction(
-  '[Assignments] Load Assignments Success',
-  props<{ assignments: any[] }>()
+export const updateRoute = createAction(
+  '[Assignments] Update Route',
+  props<{ route: any }>()
 );
-export const loadAssignmentsFailure = createAction(
-  '[Assignments] Load Assignments Failure',
+
+export const updateRouteSuccess = createAction(
+  '[Assignments] Update Route Success',
+  props<{ route: any }>()
+);
+
+export const updateRouteFailure = createAction(
+  '[Assignments] Update Route Failure',
   props<{ error: any }>()
 );

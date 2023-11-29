@@ -1,27 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { updateRoute } from '../actions/assignments.actions';
 import {
-  selectAllAssignments,
-  selectAssignmentsError,
-  selectAssignmentsLoading
+  selectAssignmentError,
+  selectAssignmentLoading,
+  selectUpdatedRoute
 } from '../selectors/assignments.selectors';
-import { AppState } from '../../../../../../../core/domain/interfaces/app-state.interface';
-import { loadAssignments } from '../actions/assignments.actions';
 
 @Injectable({ providedIn: 'root' })
 export class AssignmentsFacade {
-  assignments$: Observable<any[]> = this.store.pipe(
-    select(selectAllAssignments)
-  );
-  loading$: Observable<boolean> = this.store.pipe(
-    select(selectAssignmentsLoading)
-  );
-  error$: Observable<any> = this.store.pipe(select(selectAssignmentsError));
+  updatedRoute$ = this.store.select(selectUpdatedRoute);
+  loading$ = this.store.select(selectAssignmentLoading);
+  error$ = this.store.select(selectAssignmentError);
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store) {}
 
-  loadAllAssignments() {
-    this.store.dispatch(loadAssignments());
+  updateRoute(route: any) {
+    this.store.dispatch(updateRoute({ route }));
   }
 }

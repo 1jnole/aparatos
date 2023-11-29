@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../../../../environments/environment';
 import { RouteDTO } from '../../domain/dto/routes.dto';
-import { RouteModel } from '../../domain/interfaces/routes.interface';
+import { RouteModel } from '../../domain/interfaces/route.interface';
 
 @Injectable({ providedIn: 'root' })
 export class RoutesService {

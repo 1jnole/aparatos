@@ -1,7 +1,7 @@
-import { AssignmentEntity } from '../entities/assignment.entity';
+import { AssignmentModel } from './assignment-model';
 
 export interface AssignmentState {
-  list: AssignmentEntity[];
+  list: AssignmentModel[];
   loading: boolean;
   error: Error | null;
 }

@@ -8,16 +8,17 @@ import { OrdersFacade } from './data-access/store/facade/orders.facade';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { EffectsModule } from '@ngrx/effects';
 import { OrderEffects } from './data-access/store/effects/orders.effects';
+import { OrderComponent } from './components/order/order.component';
 
 @NgModule({
-  declarations: [OrderListComponent],
+  declarations: [OrderListComponent, OrderComponent],
   imports: [
     StoreModule.forFeature('orders', ordersReducer),
     EffectsModule.forFeature([OrderEffects]),
     CommonModule,
     OrdersRoutingModule
   ],
-  exports: [OrderListComponent],
+  exports: [OrderListComponent, OrderComponent],
   providers: [OrdersService, OrdersFacade]
 })
 export class OrdersModule {}

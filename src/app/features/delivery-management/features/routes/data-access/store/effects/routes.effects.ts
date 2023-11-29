@@ -12,7 +12,7 @@ export class RoutesEffects {
       ofType(RouteActions.loadRoutes),
       switchMap(() =>
         this.routesService.getRoutes().pipe(
-          map((routes) => RouteActions.loadRoutesSuccess({ routes })),
+          map((list) => RouteActions.loadRoutesSuccess({ list })),
           catchError((error) => of(RouteActions.loadRoutesFailure({ error })))
         )
       )

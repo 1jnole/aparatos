@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { OrdersFacade } from '../../data-access/store/facade/orders.facade';
+import { OrderDTO } from '../../domain/dto/order.dto';
 
 @Component({
   selector: 'app-order-list',
@@ -16,8 +17,8 @@ export class OrderListComponent implements OnInit {
     this.ordersFacade.loadAllOrders();
   }
 
-  onSelectOrder(orderId: string) {
-    this.ordersFacade.assignOrder(orderId);
+  onSelectOrder(order: OrderDTO) {
+    this.ordersFacade.assignSelectedOrder(order);
   }
 
   public trackByItems(index: number, _item: any): number {
