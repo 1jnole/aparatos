@@ -9,7 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
-import { reducers } from './core/domain/interfaces/store/app.state';
+import { reducers } from './core/domain/entities/app.state';
 
 @NgModule({
   declarations: [AppComponent],

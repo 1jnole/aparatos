@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { OrderDTO } from '../../dto/order.dto';
+import { OrderDTO } from '../../../domain/dto/order.dto';
 import * as OrderActions from '../actions/orders.actions';
 export interface OrderState {
   orders: OrderDTO[];

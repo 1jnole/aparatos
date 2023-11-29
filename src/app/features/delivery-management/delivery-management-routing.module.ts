@@ -1,11 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AssignmentPageComponent } from './components/assignment-page/assignment-page.component';
-import { RouteListComponent } from './components/route-list/route-list.component';
 
 const routes: Routes = [
-  { path: '', component: AssignmentPageComponent },
-  { path: 'routes', component: RouteListComponent }
+  {
+    path: '',
+    redirectTo: 'routes',
+    pathMatch: 'full'
+  },
+  {
+    path: 'riders',
+    loadChildren: () =>
+      import('./features/riders/riders.module').then((m) => m.RidersModule)
+  },
+  {
+    path: 'routes',
+    loadChildren: () =>
+      import('./features/routes/routes.module').then((m) => m.RoutesModule)
+  },
+  {
+    path: 'assignments',
+    loadChildren: () =>
+      import('./features/assignments/assignments.module').then(
+        (m) => m.AssignmentsModule
+      )
+  }
 ];
 
 @NgModule({

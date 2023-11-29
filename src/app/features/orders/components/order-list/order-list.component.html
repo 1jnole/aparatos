@@ -1,1 +1,29 @@
-<p>order-list works!</p>
+<div class="container mt-4">
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-primary">New Order</button>
+  </div>
+  <div class="row">
+    <div
+      class="col-md-4 mb-3"
+      *ngFor="let order of orders$ | async; let i=index;trackBy: trackByItems"
+    >
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ order.productName }}</h5>
+          <p class="card-text">
+            Order ID: {{ order.orderId }}<br />
+            Price: {{ order.price | currency }}
+          </p>
+        </div>
+        <div class="card-footer text-end">
+          <button
+            class="btn btn-success btn-sm"
+            (click)="onSelectOrder(order.orderId)"
+          >
+            Assign Order
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
