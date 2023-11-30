@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let rider of riders$ | async;  let i=index;trackBy: trackByItems"
+        >
+          <h5>{{ rider.driverName }}</h5>
+          <p>
+            Init location: {{ rider.initialLocation.latitude }}, {{
+            rider.initialLocation.longitude }}
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

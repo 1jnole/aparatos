@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Rutas de Entrega</h2>
+
+  <div class="row">
+    <ng-container *ngIf="routesWithOrdersAndDrivers$ | async as routesWithOrdersAndDrivers">
+      <div *ngFor="let route of routesWithOrdersAndDrivers" class="col-md-4 mb-4">
+        <div class="card route-card">
+          <div class="card-header">
+            Ruta {{ route.routeId }} - Conductor: {{ route.driverName || 'No asignado' }}
+          </div>
+          <ul class="list-group list-group-flush">
+            <!-- Pedidos en la ruta -->
+            <li *ngFor="let order of route.orders" class="list-group-item">
+              <div class="order-item">
+                <h5 class="order-item__title">{{ order.productName }}</h5>
+                <p class="order-item__details">
+                  ID: {{ order.orderId }} | Precio: {{ order.price | currency }}
+                </p>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Reasignar Pedido
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li *ngFor="let otherRoute of routesWithOrdersAndDrivers">
+                      <a class="dropdown-item" href="#" (click)="reasignOrder(order, otherRoute.routeId)">{{ otherRoute.driverName || 'Sin conductor' }} - Ruta {{ otherRoute.routeId }}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

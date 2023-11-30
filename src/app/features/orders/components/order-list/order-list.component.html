@@ -11,6 +11,11 @@
             Order ID: {{ order.orderId }}<br />
             Price: {{ order.price | currency }}
           </p>
+          <div>
+            Delivery location:
+            <p>{{ order.deliveryLocation.longitude }}</p>
+            <p>{{order.deliveryLocation.latitude}}</p>
+          </div>
         </div>
         <div class="card-footer text-end">
           <button class="btn btn-success btn-sm" (click)="onSelectOrder(order)">

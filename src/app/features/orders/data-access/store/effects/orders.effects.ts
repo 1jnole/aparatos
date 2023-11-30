@@ -32,10 +32,7 @@ export class OrderEffects {
           return action.order;
         }),
         tap((order) => {
-          this.router.navigate([
-            'delivery-management/routes/route-assignment',
-            order?.orderId
-          ]);
+          this.router.navigate(['delivery-management/assignments']);
         })
       ),
     { dispatch: false }

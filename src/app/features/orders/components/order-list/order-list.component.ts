@@ -5,7 +5,6 @@ import { OrderDTO } from '../../domain/dto/order.dto';
 @Component({
   selector: 'app-order-list',
   templateUrl: './order-list.component.html',
-  styleUrl: './order-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OrderListComponent implements OnInit {

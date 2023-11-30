@@ -1,8 +1,9 @@
 import { OrderState } from '../../interfaces/order-state.interface';
 
 export const initialOrdersState: OrderState = {
-  orders: [],
+  list: [],
   selectedOrder: null,
   loading: false,
-  error: null
+  error: null,
+  loaded: false
 };
