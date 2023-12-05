@@ -12,3 +12,8 @@ export const loadDeliveryManagementDataFailure = createAction(
   '[Delivery Management] Load Data Failure',
   props<{ error: any }>()
 );
+
+export const reasignOrder = createAction(
+  '[Delivery Management] Reasign Order',
+  props<{ orderId: string; routeId: string }>()
+);

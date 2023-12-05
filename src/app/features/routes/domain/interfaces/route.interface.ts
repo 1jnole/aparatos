@@ -1,7 +1,7 @@
 export interface RouteModel {
   routeId: string;
   driverId: string;
-  productsToDeliver:ProductToDeliver[];
+  productsToDeliver: ProductToDeliver[];
 }
 
 interface ProductToDeliver {

@@ -9,11 +9,14 @@ import {
 export const deliveryManagementReducer = createReducer(
   initialDeliveryManagementState,
   on(loadDeliveryManagementData, (state) => ({ ...state, loading: true })),
-  on(loadDeliveryManagementDataSuccess, (state, { routesWithOrdersAndDriver }) => ({
-    ...state,
-    routesWithOrdersAndDriver,
-    loading: false
-  })),
+  on(
+    loadDeliveryManagementDataSuccess,
+    (state, { routesWithOrdersAndDriver }) => ({
+      ...state,
+      routesWithOrdersAndDriver,
+      loading: false
+    })
+  ),
   on(loadDeliveryManagementDataFailure, (state, { error }) => ({
     ...state,
     error,

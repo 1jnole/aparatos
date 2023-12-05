@@ -1,14 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { DeliveryManagementFacade } from '../../data-access/store/facade/delivery-management.facade';
 import { Observable } from 'rxjs';
 import { RoutesWithOrdersAndDriver } from '../../domain/interfaces/routes-with-orders-and-driver';
-import {AppState} from "../../../../core/domain/interfaces/app-state.interface";
-import {Store} from "@ngrx/store";
-import {selectCombinedData} from "../../data-access/store/selectors/delivery-management.selectors";
-import {OrderDTO} from "../../../orders/domain/dto/order.dto";
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
-import {RouteDTO} from "../../../routes/domain/dto/routes.dto";
-import {OrderModel} from "../../../orders/domain/interfaces/order.interface";
+import { AppState } from '../../../../core/domain/interfaces/app-state.interface';
+import { select, Store } from '@ngrx/store';
+import { OrderModel } from '../../../orders/domain/interfaces/order.interface';
+import { loadDeliveryManagementData } from '../../data-access/store/actions/delivery-management.actions';
+import { selectCombinedData } from '../../data-access/store/selectors/delivery-management.selectors';
+
 @Component({
   selector: 'app-route-assignment',
   templateUrl: './route-assignment.component.html',
@@ -19,7 +17,7 @@ export class RouteAssignmentComponent implements OnInit {
   routesWithOrdersAndDrivers$!: Observable<RoutesWithOrdersAndDriver[]>;
 
   constructor(private store: Store<AppState>) {
-
+    this.store.dispatch(loadDeliveryManagementData());
   }
 
   reasignOrder(order: OrderModel, newRouteId: string): void {
@@ -28,7 +26,7 @@ export class RouteAssignmentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.routesWithOrdersAndDrivers$ = this.store.select(selectCombinedData)
+    this.routesWithOrdersAndDrivers$ = this.store.select(selectCombinedData);
   }
 
   saveAssignments() {

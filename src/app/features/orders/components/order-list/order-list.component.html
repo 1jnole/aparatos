@@ -1,28 +1,37 @@
 <div class="container mt-4">
   <div class="row">
-    <div
-      class="col-md-4 mb-3"
-      *ngFor="let order of orders$ | async; let i=index;trackBy: trackByItems"
-    >
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title">{{ order.productName }}</h5>
-          <p class="card-text">
-            Order ID: {{ order.orderId }}<br />
-            Price: {{ order.price | currency }}
-          </p>
-          <div>
-            Delivery location:
-            <p>{{ order.deliveryLocation.longitude }}</p>
-            <p>{{order.deliveryLocation.latitude}}</p>
+    <ng-container *ngIf="orders$ | async as orders">
+      <div
+        class="col-md-6 col-lg-4 mb-3"
+        *ngFor="let order of orders; trackBy: trackByItems"
+      >
+        <div class="card order-card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">
+              <i class="fas fa-box-open"></i> {{ order.productName }}
+            </h5>
+            <p class="card-text">
+              Order ID: {{ order.orderId }}<br />
+              <span class="badge bg-success">
+                <i class="fas fa-tag"></i> Price: {{ order.price | currency }}
+              </span>
+            </p>
+            <div>
+              <i class="fas fa-truck"></i> Delivery location:
+              <div>Longitude: {{ order.deliveryLocation.longitude }}</div>
+              <div>Latitude: {{ order.deliveryLocation.latitude }}</div>
+            </div>
+          </div>
+          <div class="card-footer text-end">
+            <button
+              class="btn btn-outline-dark btn-sm"
+              (click)="onSelectOrder(order)"
+            >
+              Assign
+            </button>
           </div>
         </div>
-        <div class="card-footer text-end">
-          <button class="btn btn-success btn-sm" (click)="onSelectOrder(order)">
-            Assign
-          </button>
-        </div>
       </div>
-    </div>
+    </ng-container>
   </div>
 </div>

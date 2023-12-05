@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RouteAssignmentComponent } from './components/route-assignment/route-assignment.component';
-import {routeAssignmentResolver} from "./resolvers/route-assignment.resolver";
+import { routesResolver } from '../routes/resolvers/routes.resolver';
+import { ridersResolver } from '../riders/resolvers/riders.resolver';
+import { ordersResolver } from '../orders/resolvers/orders.resolver';
 
 const routes: Routes = [
   {
     path: 'assignments',
     component: RouteAssignmentComponent,
     resolve: {
-      routes: routeAssignmentResolver
+      riders: ridersResolver,
+      routes: routesResolver,
+      orders: ordersResolver
     }
   }
 ];
