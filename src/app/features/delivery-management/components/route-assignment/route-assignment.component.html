@@ -1,67 +1,99 @@
-<div class="container mt-4">
+<div class="container mt-4" *ngIf="isLoading$ | async; else dataLoaded">
   <h2 class="mb-4 text-primary">Rutas de Entrega</h2>
   <div class="row">
-    <ng-container
-      *ngIf="routesWithOrdersAndDrivers$ | async as routesWithOrdersAndDrivers"
-    >
-      <div
-        *ngFor="let route of routesWithOrdersAndDrivers"
-        class="col-md-4 mb-4"
-      >
-        <div class="card route-card shadow-sm">
-          <div class="card-header bg-light route-card__header">
-            <div><span class="fw-bold">Ruta:</span> {{ route.routeId }}</div>
-            <div>
-              <span class="fw-bold">Conductor:</span>
-              <span
-                [class]="route.driverName ? 'badge bg-info' : 'badge bg-danger'"
-              >
-                {{ route.driverName || 'No asignado' }}
-              </span>
-            </div>
-            <div class="route-card__location">
-              <span
-                ><i class="fas fa-map-marker-alt"></i> Ubicación del
-                Conductor:</span
-              >
-              <div *ngIf="route.initialLocation">
-                <div>Latitud: {{ route.initialLocation.lat }}</div>
-                <div>Longitud: {{ route.initialLocation.lng }}</div>
-              </div>
-              <div *ngIf="!route.initialLocation" class="text-muted">
-                No disponible
-              </div>
-            </div>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li
-              *ngFor="let order of route.orders"
-              class="list-group-item route-card__order-item"
-            >
-              <div class="order-item">
-                <h5 class="order-item__title">{{ order.productName }}</h5>
-                <div>
-                  ID: {{ order.orderId }}
-                  <span class="badge bg-success">
-                    <i class="fas fa-tag"></i> Price: {{ order.price | currency
-                    }}
-                  </span>
-                </div>
-
-                <div class="order-item__location">
-                  <div class="order-info">
-                    <div>
-                      <i class="fas fa-truck"></i> Ubicación del pedido:
-                    </div>
-                    <div>Latitud: {{ order.deliveryLocation.lat }}</div>
-                    <div>Longitud: {{ order.deliveryLocation.lng }}</div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+    <div class="col-md-4 mb-4" *ngFor="let i of [].constructor(3)"> <!-- Suponiendo 3 rutas como ejemplo -->
+      <div class="card route-card shadow-sm skeleton-loader">
+        <div class="card-header bg-light route-card__header skeleton-text"></div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item skeleton-text"></li>
+          <li class="list-group-item skeleton-text"></li>
+          <li class="list-group-item skeleton-text"></li>
+        </ul>
       </div>
-    </ng-container>
+    </div>
   </div>
 </div>
+<ng-template #dataLoaded>
+  <div class="container mt-4">
+    <h2 class="mb-4 text-primary">Rutas de Entrega</h2>
+    <div class="row">
+      <ng-container
+        *ngIf="routesWithOrdersAndDrivers$ | async as routesWithOrdersAndDrivers"
+      >
+        <div
+          *ngFor="let route of routesWithOrdersAndDrivers"
+          class="col-md-4 mb-4"
+        >
+          <div class="card route-card shadow-sm">
+            <div class="card-header bg-light route-card__header">
+              <div><span class="fw-bold">Ruta:</span> {{ route.routeId }}</div>
+              <div>
+                <span class="fw-bold">Conductor:</span>
+                <span
+                  [class]="route.driverName ? 'badge bg-info' : 'badge bg-danger'"
+                >
+                {{ route.driverName || 'No disponible' }}
+              </span>
+              </div>
+              <div class="route-card__location">
+              <span
+              ><i class="fas fa-map-marker-alt"></i> Ubicación del
+                Conductor:</span
+              >
+                <div *ngIf="route.initialLocation">
+                  <div>Latitud: {{ route.initialLocation.lat }}</div>
+                  <div>Longitud: {{ route.initialLocation.lng }}</div>
+                </div>
+                <div *ngIf="!route.initialLocation" class="text-muted">
+                  No disponible
+                </div>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li
+                *ngFor="let order of route.orders"
+                class="list-group-item route-card__order-item"
+              >
+                <div class="order-item">
+                  <h5 class="order-item__title">{{ order.productName }}</h5>
+                  <div>
+                    ID: {{ order.orderId }}
+                    <span class="badge bg-success">
+                    <i class="fas fa-tag"></i> Price: {{ order.price | currency
+                      }}
+                  </span>
+                  </div>
+
+                  <div class="order-item__location">
+                    <div class="order-info">
+                      <div>
+                        <i class="fas fa-truck"></i> Ubicación del pedido:
+                      </div>
+                      <div>Latitud: {{ order.deliveryLocation.lat }}</div>
+                      <div>Longitud: {{ order.deliveryLocation.lng }}</div>
+                    </div>
+                  </div>
+
+                  <!-- Botones de acción rápida para reasignar pedidos -->
+                  <div class="mt-2">
+                    <label for="routeSelect{{order.orderId}}">Reasignar a Ruta:</label>
+                    <select class="form-select" id="routeSelect{{order.orderId}}" (change)="reassignOrder(order, $event.target)">
+                      <option value="">Seleccione una ruta</option>
+                      <ng-container *ngFor="let r of routesWithOrdersAndDrivers$ | async">
+                        <option *ngIf="r.routeId !== route.routeId" [value]="r.routeId">{{ r.routeId }}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+</ng-template>
+
+
+

@@ -13,7 +13,7 @@ import { OrderDTO } from '../../../domain/dto/order.dto';
 export class OrdersFacade {
   orders$ = this.store.pipe(select(ordersSelectors.selectAllOrders));
   selectedOrder$ = this.store.pipe(select(ordersSelectors.selectSelectedOrder));
-  loading$ = this.store.pipe(select(selectOrderLoading));
+  isLoading$ = this.store.pipe(select(selectOrderLoading));
   error$ = this.store.pipe(select(selectOrdersError));
 
   constructor(private store: Store<AppState>) {}
