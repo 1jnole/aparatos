@@ -11,5 +11,4 @@ export class OrdersService {
   getOrders(): Observable<OrderDTO[]> {
     return this.http.get<OrderDTO[]>(`${environment.apiBaseUrl}/orders`);
   }
-
 }

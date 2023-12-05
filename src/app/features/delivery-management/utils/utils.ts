@@ -12,6 +12,7 @@ export function combineData(
   return routes.map((route) => {
     const driver = riders.find((rider) => rider.driverId === route.driverId);
     const driverName = driver ? driver.driverName : undefined;
+    const driverId = driver ? driver.driverId : undefined;
     const initialLocation = driver
       ? {
           lat: driver?.initialLocation?.latitude,
@@ -40,7 +41,8 @@ export function combineData(
 
     return {
       routeId: route.routeId,
-      driverName: driverName,
+      driverName,
+      driverId,
       initialLocation,
       orders: assignedOrders
     };

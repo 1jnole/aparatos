@@ -13,7 +13,20 @@ export const loadDeliveryManagementDataFailure = createAction(
   props<{ error: any }>()
 );
 
-export const reasignOrder = createAction(
-  '[Delivery Management] Reasign Order',
-  props<{ orderId: string; routeId: string }>()
+export const updateRoutes = createAction(
+  '[Delivery Management] Update Routes'
+);
+
+export const updateRoutesSuccess = createAction(
+  '[Delivery Management] Update Routes Success'
+);
+
+export const updateRoutesFailure = createAction(
+  '[Delivery Management] Update Routes Failure',
+  props<{ error: any }>()
+);
+
+export const reassignOrderAction = createAction(
+  '[Delivery Management] Reassign Order',
+  props<{ orderId: string; newRouteId: string }>()
 );

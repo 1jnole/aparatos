@@ -18,7 +18,15 @@
 </div>
 <ng-template #dataLoaded>
   <div class="container mt-4">
-    <h2 class="mb-4 text-primary">Rutas de Entrega</h2>
+    <div class="d-flex justify-content-between">
+      <h2 class="mb-4 text-primary">Rutas de Entrega</h2>
+      <div *ngIf="isEditing$ | async">
+        <button class="btn btn-outline-dark" (click)="onSaveChanges()">
+          Guardar Cambios
+        </button>
+      </div>
+    </div>
+
     <div class="row">
       <ng-container
         *ngIf="routesWithOrdersAndDrivers$ | async as routesWithOrdersAndDrivers"
@@ -62,7 +70,7 @@
                   <div>
                     ID: {{ order.orderId }}
                     <span class="badge bg-success">
-                      <i class="fas fa-tag"></i> Price: {{ order.price |
+                      <i class="fas fa-tag"></i> Precio: {{ order.price |
                       currency }}
                     </span>
                   </div>

@@ -13,11 +13,7 @@ import { catchError, retry } from 'rxjs/operators';
  */
 @Injectable()
 export class ErrorHandlingInterceptor implements HttpInterceptor {
-  constructor() {
-    console.log('ErrorHandlingInterceptor');
-  }
-
-
+  constructor() {}
 
   /**
    * Intercepts an HTTP request and applies retry logic for specific error conditions.
@@ -51,7 +47,7 @@ export class ErrorHandlingInterceptor implements HttpInterceptor {
   private handleError(error: HttpErrorResponse): Observable<never> {
     //TODO: Add some toast notification service here
     console.log('handleError');
-    alert('Error occurred while processing the request.')
+    alert('Error occurred while processing the request.');
     return throwError(() => error);
   }
 }

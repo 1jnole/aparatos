@@ -2,5 +2,6 @@ import { DeliveryManagementState } from '../interfaces/routh-with-orders-state.i
 
 export const initialDeliveryManagementState: DeliveryManagementState = {
   routesWithOrdersAndDriver: [],
-  loading: false
+  loading: false,
+  isEditing: false
 };
