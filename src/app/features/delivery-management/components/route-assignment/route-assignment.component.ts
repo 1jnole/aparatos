@@ -2,12 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RoutesWithOrdersAndDriver } from '../../domain/interfaces/routes-with-orders-and-driver';
 import { AppState } from '../../../../core/domain/interfaces/app-state.interface';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { OrderModel } from '../../../orders/domain/interfaces/order.interface';
-import {
-  loadDeliveryManagementData,
-  reassignOrderAction
-} from '../../data-access/store/actions/delivery-management.actions';
+import { loadDeliveryManagementData } from '../../data-access/store/actions/delivery-management.actions';
 import { selectRoutesWithOrdersAndDrivers } from '../../data-access/store/selectors/delivery-management.selectors';
 import { DeliveryManagementFacade } from '../../data-access/store/facade/delivery-management.facade';
 

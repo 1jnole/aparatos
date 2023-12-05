@@ -13,9 +13,7 @@ export const loadDeliveryManagementDataFailure = createAction(
   props<{ error: any }>()
 );
 
-export const updateRoutes = createAction(
-  '[Delivery Management] Update Routes'
-);
+export const updateRoutes = createAction('[Delivery Management] Update Routes');
 
 export const updateRoutesSuccess = createAction(
   '[Delivery Management] Update Routes Success'
