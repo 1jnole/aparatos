@@ -10,7 +10,7 @@ import { OrderDTO } from '../../domain/dto/order.dto';
 })
 export class OrderListComponent implements OnInit {
   orders$ = this.ordersFacade.orders$;
-  isLoading$ = this.ordersFacade.isLoading$
+  isLoading$ = this.ordersFacade.isLoading$;
 
   constructor(private ordersFacade: OrdersFacade) {}
 

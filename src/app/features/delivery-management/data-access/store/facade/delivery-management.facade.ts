@@ -3,7 +3,10 @@ import { select, Store } from '@ngrx/store';
 import { AppState } from '../../../../../core/domain/interfaces/app-state.interface';
 import { Observable } from 'rxjs';
 import { RoutesWithOrdersAndDriver } from '../../../domain/interfaces/routes-with-orders-and-driver';
-import {selectCombinedData, selectDeliveryManagementLoading} from '../selectors/delivery-management.selectors';
+import {
+  selectCombinedData,
+  selectDeliveryManagementLoading
+} from '../selectors/delivery-management.selectors';
 
 @Injectable({
   providedIn: 'root'

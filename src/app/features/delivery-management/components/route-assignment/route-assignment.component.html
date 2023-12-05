@@ -1,9 +1,12 @@
 <div class="container mt-4" *ngIf="isLoading$ | async; else dataLoaded">
   <h2 class="mb-4 text-primary">Rutas de Entrega</h2>
   <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let i of [].constructor(3)"> <!-- Suponiendo 3 rutas como ejemplo -->
+    <div class="col-md-4 mb-4" *ngFor="let i of [].constructor(3)">
+      <!-- Suponiendo 3 rutas como ejemplo -->
       <div class="card route-card shadow-sm skeleton-loader">
-        <div class="card-header bg-light route-card__header skeleton-text"></div>
+        <div
+          class="card-header bg-light route-card__header skeleton-text"
+        ></div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item skeleton-text"></li>
           <li class="list-group-item skeleton-text"></li>
@@ -32,14 +35,14 @@
                 <span
                   [class]="route.driverName ? 'badge bg-info' : 'badge bg-danger'"
                 >
-                {{ route.driverName || 'No disponible' }}
-              </span>
+                  {{ route.driverName || 'No disponible' }}
+                </span>
               </div>
               <div class="route-card__location">
-              <span
-              ><i class="fas fa-map-marker-alt"></i> Ubicación del
-                Conductor:</span
-              >
+                <span
+                  ><i class="fas fa-map-marker-alt"></i> Ubicación del
+                  Conductor:</span
+                >
                 <div *ngIf="route.initialLocation">
                   <div>Latitud: {{ route.initialLocation.lat }}</div>
                   <div>Longitud: {{ route.initialLocation.lng }}</div>
@@ -59,9 +62,9 @@
                   <div>
                     ID: {{ order.orderId }}
                     <span class="badge bg-success">
-                    <i class="fas fa-tag"></i> Price: {{ order.price | currency
-                      }}
-                  </span>
+                      <i class="fas fa-tag"></i> Price: {{ order.price |
+                      currency }}
+                    </span>
                   </div>
 
                   <div class="order-item__location">
@@ -76,11 +79,24 @@
 
                   <!-- Botones de acción rápida para reasignar pedidos -->
                   <div class="mt-2">
-                    <label for="routeSelect{{order.orderId}}">Reasignar a Ruta:</label>
-                    <select class="form-select" id="routeSelect{{order.orderId}}" (change)="reassignOrder(order, $event.target)">
+                    <label for="routeSelect{{order.orderId}}"
+                      >Reasignar a Ruta:</label
+                    >
+                    <select
+                      class="form-select"
+                      id="routeSelect{{order.orderId}}"
+                      (change)="reassignOrder(order, $event.target)"
+                    >
                       <option value="">Seleccione una ruta</option>
-                      <ng-container *ngFor="let r of routesWithOrdersAndDrivers$ | async">
-                        <option *ngIf="r.routeId !== route.routeId" [value]="r.routeId">{{ r.routeId }}</option>
+                      <ng-container
+                        *ngFor="let r of routesWithOrdersAndDrivers$ | async"
+                      >
+                        <option
+                          *ngIf="r.routeId !== route.routeId"
+                          [value]="r.routeId"
+                        >
+                          {{ r.routeId }}
+                        </option>
                       </ng-container>
                     </select>
                   </div>
@@ -92,8 +108,4 @@
       </ng-container>
     </div>
   </div>
-
 </ng-template>
-
-
-

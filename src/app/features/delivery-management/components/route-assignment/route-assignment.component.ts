@@ -6,7 +6,7 @@ import { select, Store } from '@ngrx/store';
 import { OrderModel } from '../../../orders/domain/interfaces/order.interface';
 import { loadDeliveryManagementData } from '../../data-access/store/actions/delivery-management.actions';
 import { selectCombinedData } from '../../data-access/store/selectors/delivery-management.selectors';
-import {DeliveryManagementFacade} from "../../data-access/store/facade/delivery-management.facade";
+import { DeliveryManagementFacade } from '../../data-access/store/facade/delivery-management.facade';
 
 @Component({
   selector: 'app-route-assignment',
@@ -16,9 +16,12 @@ import {DeliveryManagementFacade} from "../../data-access/store/facade/delivery-
 })
 export class RouteAssignmentComponent implements OnInit {
   public routesWithOrdersAndDrivers$!: Observable<RoutesWithOrdersAndDriver[]>;
-  public isLoading$ =  this.deliveryManagementFacade.isLoading$;
+  public isLoading$ = this.deliveryManagementFacade.isLoading$;
 
-  constructor(private store: Store<AppState>, private deliveryManagementFacade: DeliveryManagementFacade) {
+  constructor(
+    private store: Store<AppState>,
+    private deliveryManagementFacade: DeliveryManagementFacade
+  ) {
     this.store.dispatch(loadDeliveryManagementData());
   }
 
@@ -38,7 +41,7 @@ export class RouteAssignmentComponent implements OnInit {
   openEditModal(order: OrderModel) {}
 
   reassignOrder(order: OrderModel, target: any) {
-    console.log('Reasignar pedido', order)
-    console.log('Reasignar pedido id', target.value)
+    console.log('Reasignar pedido', order);
+    console.log('Reasignar pedido id', target.value);
   }
 }

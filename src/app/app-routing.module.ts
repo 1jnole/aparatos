@@ -14,7 +14,8 @@ const routes: Routes = [
       import('./features/delivery-management/delivery-management.module').then(
         (m) => m.DeliveryManagementModule
       )
-  }
+  },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({
