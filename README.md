@@ -8,7 +8,7 @@
 
 The  project is a dynamic Angular web application for Aparatos S.L., a company specializing in electronic devices. This application serves both customers looking to purchase products and internal staff managing logistics.
 
-hammer_and_wrench: Key Dependencies
+## :hammer_and_wrench: Key Dependencies
 NgRx: Reactive state management for Angular.
 Ngx-Bootstrap: Integration of Bootstrap components with Angular.
 Ngx-Toastr: Toast notifications for Angular applications.
