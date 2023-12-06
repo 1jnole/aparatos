@@ -47,7 +47,7 @@ To set up the project:
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/aparatos.git
+   git clone https://github.com/1jnole/aparatos.git
    ```
 2. Navigate to the project directory:
    ```sh
@@ -66,21 +66,3 @@ npm start
 ```
 Visit `http://localhost:4200/` in your browser.
 
-To run tests:
-```sh
-npm test
-```
-
-## :busts_in_silhouette: Contributing
-
-We welcome your contributions! Please follow the steps below to contribute to this project:
-
-1. Fork the project.
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a pull request.
-
-## :question: Support
-
-For support, please open an issue or contact the project maintainers.
