@@ -1,27 +1,86 @@
-# Aparatos
+# Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
+![Angular](https://img.shields.io/badge/Angular-17-DD0031?style=for-the-badge&logo=angular)
+![Node.js](https://img.shields.io/badge/Node.js-20.10.0-339933?style=for-the-badge&logo=node.js)
+![NPM](https://img.shields.io/badge/npm-10.2.3-CB3837?style=for-the-badge&logo=npm)
 
-## Development server
+## :page_facing_up: About the Project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The  project is a dynamic Angular web application for Aparatos S.L., a company specializing in electronic devices. This application serves both customers looking to purchase products and internal staff managing logistics.
 
-## Code scaffolding
+## :open_file_folder: Project Scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+src/
+├── app/
+│   ├── core/                     # Core Module (Singleton services, universal components)
+│   │   ├── components/
+│   │   ├── domain/
+│   │   ├── interceptors/
+│   │   └── mocks/
+│   ├── features/                 # Feature Modules
+│   │   ├── delivery-management/  # Delivery Management Feature
+│   │   └── home/                 # Home Feature
+│   ├── orders/                   # Orders Feature
+│   │   ├── components/
+│   │   ├── data-access/          # Orders NgRx state management
+│   │   │   ├── api/
+│   │   │   ├── store/
+│   │   │   │   ├── actions/
+│   │   │   │   ├── effects/
+│   │   │   │   ├── facade/
+│   │   │   │   ├── reducers/
+│   │   │   │   └── selectors/
+│   │   │   └── orders-data-access.module.ts
+│   │   └── domain/
+│   │       └── dto/
+└── ...
+```
 
-## Build
+## :gear: Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Ensure you have the following installed:
+- Node.js: v20.10.0 ![Node.js](https://img.shields.io/badge/Node.js-20.10.0-339933?style=flat-square&logo=node.js)
+- npm: v10.2.3 ![NPM](https://img.shields.io/badge/npm-10.2.3-CB3837?style=flat-square&logo=npm)
 
-## Running unit tests
+To set up the project:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/aparatos.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd aparatos
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
 
-## Running end-to-end tests
+## :rocket: Usage
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+To run the development server:
+```sh
+npm start
+```
+Visit `http://localhost:4200/` in your browser.
 
-## Further help
+To run tests:
+```sh
+npm test
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## :busts_in_silhouette: Contributing
+
+We welcome your contributions! Please follow the steps below to contribute to this project:
+
+1. Fork the project.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a pull request.
+
+## :question: Support
+
+For support, please open an issue or contact the project maintainers.

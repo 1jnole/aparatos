@@ -8,8 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { reducers } from './core/domain/entities/app.state';
+import { ErrorHandlingInterceptor } from './core/interceptors/error-handler.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,9 +23,17 @@ import { reducers } from './core/domain/entities/app.state';
     EffectsModule.forRoot([]),
     CoreModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorHandlingInterceptor,
+      multi: true // adding to the existing interceptors
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

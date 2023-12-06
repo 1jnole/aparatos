@@ -9,17 +9,13 @@ const routes: Routes = [
       import('./features/home/home.module').then((m) => m.HomeModule)
   },
   {
-    path: 'orders',
-    loadChildren: () =>
-      import('./features/orders/orders.module').then((m) => m.OrdersModule)
-  },
-  {
     path: 'delivery-management',
     loadChildren: () =>
       import('./features/delivery-management/delivery-management.module').then(
         (m) => m.DeliveryManagementModule
       )
-  }
+  },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({

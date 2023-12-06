@@ -1,8 +1,9 @@
 import { OrderDTO } from '../dto/order.dto';
 
 export interface OrderState {
-  orders: OrderDTO[];
+  list: OrderDTO[];
   selectedOrder: OrderDTO | null;
   loading: boolean;
   error: Error | null;
+  loaded: boolean;
 }

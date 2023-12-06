@@ -7,13 +7,15 @@ export const ordersReducer = createReducer(
   on(OrderActions.loadOrders, (state) => ({ ...state, loading: true })),
   on(OrderActions.loadOrdersSuccess, (state, { orders }) => ({
     ...state,
-    orders,
-    loading: false
+    list: orders,
+    loading: false,
+    loaded: true
   })),
   on(OrderActions.loadOrdersFailure, (state, { error }) => ({
     ...state,
     loading: false,
-    error
+    error,
+    loaded: false
   })),
   on(OrderActions.selectOrder, (state, { order }) => ({
     ...state,
