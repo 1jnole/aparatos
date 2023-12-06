@@ -1,4 +1,3 @@
-// riders.resolver.ts
 import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';

@@ -8,12 +8,13 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError, timer } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import {ToastrService} from "ngx-toastr";
 /**
  * Intercepts HTTP requests and adds global error handling and retry logic.
  */
 @Injectable()
 export class ErrorHandlingInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private toastr: ToastrService) {}
 
   /**
    * Intercepts an HTTP request and applies retry logic for specific error conditions.
@@ -45,9 +46,7 @@ export class ErrorHandlingInterceptor implements HttpInterceptor {
    * @returns An Observable that emits the error, after processing it.
    */
   private handleError(error: HttpErrorResponse): Observable<never> {
-    //TODO: Add some toast notification service here
-    console.log('handleError');
-    alert('Error occurred while processing the request.');
+    this.toastr.error(error.message, error.statusText,{ timeOut: 5000, } );
     return throwError(() => error);
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { mergeMap, of, withLatestFrom } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import {catchError, filter, map, tap} from 'rxjs/operators';
 import * as RiderSelectors from '../../../../riders/data-access/store/selectors/riders.selectors';
 import * as RouteSelectors from '../../../../routes/data-access/store/selectors/routes.selectors';
 import * as OrderSelectors from '../../../../orders/data-access/store/selectors/orders.selectors';
@@ -19,6 +19,7 @@ import { combineData } from '../../../utils/utils';
 import { DeliveryManagementService } from '../../api/delivery-management.service';
 import { RoutesWithOrdersAndDriver } from '../../../domain/interfaces/routes-with-orders-and-driver';
 import { selectRoutesWithOrdersAndDrivers } from '../selectors/delivery-management.selectors';
+import {ToastrService} from "ngx-toastr";
 
 @Injectable()
 export class DeliveryManagementEffects {
@@ -46,18 +47,19 @@ export class DeliveryManagementEffects {
         const transformedRoutes = currentRoutes.map(
           (route: RoutesWithOrdersAndDriver) => ({
             routeId: route.routeId,
-            driverId: route.driverId,
+            driverId: route.driverId as string,
             productsToDeliver: route.orders.map((order) => ({
               orderId: order.orderId
             }))
           })
         );
-        return this.deliveryManagementService
-          .updateRoutes(transformedRoutes)
-          .pipe(
-            map(() => updateRoutesSuccess()),
-            catchError((error) => of(updateRoutesFailure({ error })))
-          );
+        return this.deliveryManagementService.updateRoutes(transformedRoutes).pipe(
+          map(() => updateRoutesSuccess()),
+          tap(() => {
+            this.toastr.success('Rutas actualizadas correctamente');
+          }),
+          catchError((error) => of(updateRoutesFailure({ error })))
+        );
       })
     )
   );
@@ -65,6 +67,7 @@ export class DeliveryManagementEffects {
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private deliveryManagementService: DeliveryManagementService
+    private deliveryManagementService: DeliveryManagementService,
+    private toastr: ToastrService
   ) {}
 }

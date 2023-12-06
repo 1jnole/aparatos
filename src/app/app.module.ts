@@ -12,6 +12,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { reducers } from './core/domain/entities/app.state';
 import { ErrorHandlingInterceptor } from './core/interceptors/error-handler.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CoreModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [
